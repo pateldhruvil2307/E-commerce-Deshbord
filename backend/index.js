@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URL, {
     console.log("✅ MongoDB connected");
 
     // Start server only after DB connected
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
         console.log("🚀 Server running on port 3000");
     });
 })
@@ -30,11 +30,10 @@ mongoose.connect(process.env.MONGODB_URL, {
     console.error("❌ MongoDB connection error:", err);
 });
 
-// ======================
-// Routes
-// ======================
 
-// Register User
+const PORT=process.env.PORT
+
+
 app.post('/register', async (req, res) => {
     try {
         let users = new user(req.body);
